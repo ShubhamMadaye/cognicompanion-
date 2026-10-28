@@ -1,0 +1,35 @@
+# Local machine config — SDK path, absolute paths (NEVER commit)
+local.properties
+
+# Gradle build outputs
+.gradle/
+build/
+app/build/
+
+# Gradle wrapper jar (keep gradlew scripts, ignore the binary jar)
+gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ / Android Studio IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Kotlin incremental compilation
+.kotlin/
+
+# Keystore / signing files — NEVER commit these
+*.jks
+*.keystore
+keystore.properties
+release.properties
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

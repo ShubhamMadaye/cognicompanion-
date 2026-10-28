@@ -1,0 +1,14 @@
+python-interpreter-path = "C:/Projects/sih/cognicompanion/backend/venv312/Scripts/python.exe"
+
+site-package-path = [
+    "C:/Projects/sih/cognicompanion/backend/venv312/Lib/site-packages"
+]
+
+search_path = [
+    "C:/Projects/sih/cognicompanion/backend",
+    "C:/Projects/sih/cognicompanion/backend/app",
+    "C:/Projects/sih/cognicompanion/backend/venv312/Lib/site-packages"
+]
+
+project_includes = ["app", "migrations", "tests"]
+project_excludes = ["venv312", ".venv", "__pycache__"]

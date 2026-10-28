@@ -1,0 +1,15 @@
+{
+  "venvPath": "C:/Projects/sih/cognicompanion/backend",
+  "venv": "venv312",
+  "pythonPath": "C:/Projects/sih/cognicompanion/backend/venv312/Scripts/python.exe",
+  "extraPaths": [
+    "C:/Projects/sih/cognicompanion/backend",
+    "C:/Projects/sih/cognicompanion/backend/app",
+    "C:/Projects/sih/cognicompanion/backend/venv312/Lib/site-packages"
+  ],
+  "pythonVersion": "3.12",
+  "pythonPlatform": "Windows",
+  "typeCheckingMode": "basic",
+  "include": ["app", "migrations", "tests"],
+  "exclude": ["venv312", ".venv", "__pycache__"]
+}

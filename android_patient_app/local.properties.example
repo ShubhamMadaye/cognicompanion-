@@ -1,0 +1,3 @@
+# Copy to local.properties only if Android Studio does not create it automatically.
+# Windows example:
+# sdk.dir=C\\Users\\YOUR_USERNAME\\AppData\\Local\\Android\\Sdk

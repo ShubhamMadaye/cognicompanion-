@@ -1,0 +1,68 @@
+services:
+  # ── PostgreSQL Database with pgvector Extension ─────────────────────────────
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: cognicompanion_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cogni_user
+      POSTGRES_PASSWORD: cogni_pass
+      POSTGRES_DB: cognicompanion
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cogni_user -d cognicompanion"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── FastAPI Backend ─────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cognicompanion_backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: CogniCompanion
+      APP_ENV: production
+      DEBUG: "false"
+      DATABASE_URL: postgresql+asyncpg://cogni_user:cogni_pass@db:5432/cognicompanion
+      SYNC_DATABASE_URL: postgresql+psycopg2://cogni_user:cogni_pass@db:5432/cognicompanion
+      JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-key-for-cognicompanion-production-min32chars}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-super-secret-refresh-key-for-cognicompanion-min32chars}
+      JWT_ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      REFRESH_TOKEN_EXPIRE_DAYS: 7
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      LLM_MODEL: gemini-1.5-pro
+      EMBEDDING_MODEL: models/text-embedding-004
+      STORAGE_PROVIDER: local
+      LOCAL_STORAGE_PATH: /app/uploads
+      CORS_ORIGINS: http://localhost:3000,http://localhost:80,http://localhost:5173
+      API_V1_PREFIX: /api/v1
+    volumes:
+      - backend_uploads:/app/uploads
+
+  # ── React + Vite Caregiver Dashboard Frontend ───────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cognicompanion_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  pgdata:
+  backend_uploads:

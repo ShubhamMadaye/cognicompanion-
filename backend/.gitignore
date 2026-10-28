@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+venv312/
+ENV/
+env/
+
+# Environment / Secrets
+.env
+.env.local
+.env.production
+# Always commit the example file
+!.env.example
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Alembic
+# (migrations/ IS committed, but generated upgrade artefacts are not)
+
+# Uploads / user-generated content
+uploads/
+
+# Archives
+*.zip
+*.tar.gz
+
+# IDE
+.idea/
+.vscode/
+
+# Pyright / Pyrefly (keep config files, ignore caches)
+pyrightconfig.json.bak

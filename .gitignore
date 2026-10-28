@@ -1,0 +1,45 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+
+# IntelliJ / Android Studio / WebStorm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+
+# Environment / Secrets - NEVER commit real .env files
+.env
+.env.local
+.env.production
+.env.*.local
+# Always commit example/template env files
+!.env.example
+!*.env.example
+
+# Zip archives (source exports - should not be in version control)
+*.zip
+
+# SQL dumps (may contain PII)
+cognicompanion_dump.sql
+*.sql.gz
+*.dump
+
+# Docker overrides with local secrets
+docker-compose.override.yml
+
+# Data files — parquet (generated/downloaded, can be very large)
+*.parquet
+
+# Markdown docs (generated reports, schema docs, deployment guides)
+# README.md is whitelisted so it still appears on GitHub
+*.md
+!README.md
+

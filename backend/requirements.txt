@@ -1,0 +1,36 @@
+# ── Core Framework ──────────────────────────────────────────────────────────────
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart==0.0.12        # File uploads
+
+# ── Database ─────────────────────────────────────────────────────────────────────
+sqlalchemy==2.0.36
+alembic==1.14.0
+asyncpg==0.30.0                 # Async PostgreSQL driver
+pgvector==0.3.6                 # pgvector ORM integration
+
+# ── Authentication ───────────────────────────────────────────────────────────────
+python-jose[cryptography]==3.3.0   # JWT
+types-python-jose                  # Type stubs for jose
+passlib[bcrypt]==1.7.4             # Password hashing
+bcrypt==4.0.1                      # Pinned: passlib 1.7.4 is incompatible with bcrypt>=5
+
+# ── Configuration ────────────────────────────────────────────────────────────────
+pydantic==2.10.3
+pydantic[email]==2.10.3
+pydantic-settings==2.6.1
+python-dotenv==1.0.1
+
+# ── AI Providers — Google Gemini ─────────────────────────────────────────────────
+google-generativeai==0.8.3         # Gemini LLM + embeddings
+google-cloud-speech==2.27.0        # STT (Speech-to-Text)
+google-cloud-texttospeech==2.21.1  # TTS (Text-to-Speech)
+
+# ── HTTP / Utilities ─────────────────────────────────────────────────────────────
+httpx==0.28.1
+aiofiles==24.1.0               # Async file I/O for storage
+
+# ── Testing ──────────────────────────────────────────────────────────────────────
+pytest==8.3.4
+pytest-asyncio==0.24.0
+aiosqlite==0.20.0              # In-memory async DB for tests

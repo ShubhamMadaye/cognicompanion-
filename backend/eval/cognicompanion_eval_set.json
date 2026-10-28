@@ -1,0 +1,242 @@
+[
+  {
+    "id": "tc_01_as_visit_recall",
+    "language": "as-IN",
+    "tier": 1,
+    "category": "visit_recall",
+    "query": "ৰাহুল কেতিয়া আহিছিল?",
+    "description": "Assamese: When did Rahul visit?",
+    "expected_intent": "visit_recall",
+    "expected_person": "Rahul",
+    "context": {"known_people": ["Rahul", "Priya"]}
+  },
+  {
+    "id": "tc_02_as_medication",
+    "language": "as-IN",
+    "tier": 1,
+    "category": "medication_adherence",
+    "query": "মই আজি পুৱাৰ ঔষধ খালোনে?",
+    "description": "Assamese: Did I take my morning medicine today?",
+    "expected_intent": "medication_adherence",
+    "expected_timing": "morning",
+    "context": {"known_medications": ["Donepezil"]}
+  },
+  {
+    "id": "tc_03_as_bare_followup",
+    "language": "as-IN",
+    "tier": 1,
+    "category": "bare_followup",
+    "query": "ক'ত?",
+    "description": "Assamese: Where? (bare follow-up after visit recall)",
+    "expected_mode": "deterministic",
+    "expected_needs_clarification": false,
+    "context": {
+      "last_intent": "visit_recall",
+      "last_person": "Rahul",
+      "known_people": ["Rahul"]
+    }
+  },
+  {
+    "id": "tc_04_lus_greeting",
+    "language": "lus-IN",
+    "tier": 2,
+    "category": "general_companion",
+    "query": "Chibai, i dam em?",
+    "description": "Mizo: Hello, how are you?",
+    "expected_intent": "general_conversation",
+    "context": {}
+  },
+  {
+    "id": "tc_05_lus_medication",
+    "language": "lus-IN",
+    "tier": 2,
+    "category": "medication_adherence",
+    "query": "Zing lam damdawi ka ei tawh em?",
+    "description": "Mizo: Did I take morning medicine?",
+    "expected_intent": "medication_adherence",
+    "context": {"known_medications": ["Donepezil"]}
+  },
+  {
+    "id": "tc_06_kha_greeting",
+    "language": "kha-IN",
+    "tier": 2,
+    "category": "general_companion",
+    "query": "Khublei, kumno phi long?",
+    "description": "Khasi: Hello, how are you?",
+    "expected_intent": "general_conversation",
+    "context": {}
+  },
+  {
+    "id": "tc_07_kha_visit",
+    "language": "kha-IN",
+    "tier": 2,
+    "category": "visit_recall",
+    "query": "Mano ba wan jngoh ia nga hynnin?",
+    "description": "Khasi: Who came to visit me yesterday?",
+    "expected_intent": "visit_recall",
+    "context": {"known_people": ["Rahul"]}
+  },
+  {
+    "id": "tc_08_grt_greeting",
+    "language": "grt-IN",
+    "tier": 3,
+    "category": "general_companion",
+    "query": "Salam CogniCompanion, mai dakchakaniko nanga?",
+    "description": "Garo: Hello CogniCompanion, can you help me?",
+    "expected_intent": "general_conversation",
+    "context": {}
+  },
+  {
+    "id": "tc_09_trp_greeting",
+    "language": "trp-IN",
+    "tier": 3,
+    "category": "general_companion",
+    "query": "Kaham slung!",
+    "description": "Kokborok: Good morning / hello!",
+    "expected_intent": "general_conversation",
+    "context": {}
+  },
+  {
+    "id": "tc_10_nag_visit",
+    "language": "nag-IN",
+    "tier": 3,
+    "category": "visit_recall",
+    "query": "Rahul aji aha thakise?",
+    "description": "Nagamese: Did Rahul visit today?",
+    "expected_intent": "visit_recall",
+    "expected_person": "Rahul",
+    "context": {"known_people": ["Rahul"]}
+  },
+  {
+    "id": "tc_11_spelling_rhaul",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "spelling_correction",
+    "query": "When did Rhaul visit me?",
+    "description": "Spelling transposition Rhaul -> Rahul against roster",
+    "expected_rewritten_contains": "Rahul",
+    "context": {"known_people": ["Rahul"]}
+  },
+  {
+    "id": "tc_12_spelling_medcine",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "spelling_correction",
+    "query": "Did I take my medcine?",
+    "description": "Medical word spelling correction medcine -> medicine",
+    "expected_rewritten_contains": "medicine",
+    "context": {}
+  },
+  {
+    "id": "tc_13_pronoun_he",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "pronoun_resolution",
+    "query": "When did he visit me?",
+    "description": "Pronoun 'he' resolved to last referenced person 'Rahul'",
+    "expected_rewritten_contains": "Rahul",
+    "expected_needs_clarification": false,
+    "context": {
+      "last_intent": "visit_recall",
+      "last_person": "Rahul",
+      "known_people": ["Rahul"]
+    }
+  },
+  {
+    "id": "tc_14_pronoun_we",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "pronoun_resolution",
+    "query": "What did we do?",
+    "description": "Pronoun 'we' resolved to 'patient and Rahul'",
+    "expected_rewritten_contains": "Rahul",
+    "expected_needs_clarification": false,
+    "context": {
+      "last_intent": "visit_recall",
+      "last_person": "Rahul",
+      "known_people": ["Rahul"]
+    }
+  },
+  {
+    "id": "tc_15_bare_where",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "bare_followup",
+    "query": "Where?",
+    "description": "Bare question 'Where?' resolved using visit context",
+    "expected_rewritten_contains": "Rahul",
+    "expected_mode": "deterministic",
+    "expected_needs_clarification": false,
+    "context": {
+      "last_intent": "visit_recall",
+      "last_person": "Rahul",
+      "known_people": ["Rahul"]
+    }
+  },
+  {
+    "id": "tc_16_bare_when_medication",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "bare_followup",
+    "query": "When?",
+    "description": "Bare question 'When?' resolved using medication context",
+    "expected_rewritten_contains": "medication",
+    "expected_mode": "deterministic",
+    "expected_needs_clarification": false,
+    "context": {
+      "last_intent": "medication_adherence",
+      "known_medications": ["Donepezil"]
+    }
+  },
+  {
+    "id": "tc_17_and_person",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "bare_followup",
+    "query": "And Priya?",
+    "description": "Shorthand continuation 'And Priya?' -> When did Priya visit?",
+    "expected_rewritten_contains": "Priya",
+    "expected_needs_clarification": false,
+    "context": {
+      "last_intent": "visit_recall",
+      "last_person": "Rahul",
+      "known_people": ["Rahul", "Priya"]
+    }
+  },
+  {
+    "id": "tc_18_yesterday_continuation",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "temporal_inheritance",
+    "query": "What about yesterday?",
+    "description": "Temporal shift 'What about yesterday?' inheriting medication intent",
+    "expected_rewritten_contains": "yesterday",
+    "expected_needs_clarification": false,
+    "context": {
+      "last_intent": "medication_adherence",
+      "known_medications": ["Donepezil"]
+    }
+  },
+  {
+    "id": "tc_19_ambiguous_no_context",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "ambiguity_detection",
+    "query": "When?",
+    "description": "Bare query 'When?' with zero prior context must force Mode C clarification",
+    "expected_needs_clarification": true,
+    "expected_mode": "clarification",
+    "context": null
+  },
+  {
+    "id": "tc_20_ambiguous_who_no_context",
+    "language": "en-IN",
+    "tier": 1,
+    "category": "ambiguity_detection",
+    "query": "Who?",
+    "description": "Bare query 'Who?' with zero prior context must force Mode C clarification",
+    "expected_needs_clarification": true,
+    "expected_mode": "clarification",
+    "context": null
+  }
+]
